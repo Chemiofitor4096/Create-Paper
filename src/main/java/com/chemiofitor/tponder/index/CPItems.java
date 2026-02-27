@@ -1,5 +1,6 @@
 package com.chemiofitor.tponder.index;
 
+import com.chemiofitor.tponder.CreatePaper;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
@@ -24,5 +25,7 @@ public final class CPItems {
             .model(AssetLookup.existingItemModel())
             .register();
 
-    public static void register() {}
+    public static void register() {
+        CreatePaper.LOGGER.info("Items initialized");
+    }
 }

@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,19 +19,25 @@ public class CreatePaper {
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
 
     public CreatePaper(FMLJavaModLoadingContext context) {
-        final IEventBus modEventBus = context.getModEventBus();
+        final IEventBus bus = context.getModEventBus();
 
-        CPCreativeModeTabs.register(modEventBus);
+        CPCreativeModeTabs.register(bus);
 
-        REGISTRATE.registerEventListeners(modEventBus);
+        REGISTRATE.registerEventListeners(bus);
 
+        CPFluids.register();
         CPBlocks.register();
         CPItems.register();
-        CPFluids.register();
 
         CPBlockEntityTypes.register();
 
+        bus.addListener(CreatePaper::init);
+
         LOGGER.info("Create: Paper has loaded!.");
+    }
+
+    public static void init(final FMLCommonSetupEvent event) {
+        CPFluids.registerFluidInteractions();
     }
 
     public static ResourceLocation asResource(String path) {

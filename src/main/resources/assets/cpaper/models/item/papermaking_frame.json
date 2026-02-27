@@ -3,9 +3,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "block/oak_log",
+		"0": "minecraft:block/oak_log",
 		"4": "cpaper:block/fabric",
-		"particle": "create:block/oak_log"
+		"particle": "minecraft:block/oak_log"
 	},
 	"elements": [
 		{

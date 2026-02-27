@@ -1,5 +1,6 @@
 package com.chemiofitor.tponder.index;
 
+import com.chemiofitor.tponder.CreatePaper;
 import com.chemiofitor.tponder.common.block.entity.PapermakingFrameBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -13,5 +14,7 @@ public class CPBlockEntityTypes {
             .renderer(() -> DepotRenderer::new)
             .register();
 
-    public static void register() {}
+    public static void register() {
+        CreatePaper.LOGGER.info("Block Entity Types initialized");
+    }
 }

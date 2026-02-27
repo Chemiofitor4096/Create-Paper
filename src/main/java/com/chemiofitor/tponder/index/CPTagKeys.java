@@ -25,7 +25,6 @@ public final class CPTagKeys {
     }
 
     public static final class Fluids {
-
         private static TagKey<Fluid> create(String namespace, String id) {
             return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(namespace, id));
         }

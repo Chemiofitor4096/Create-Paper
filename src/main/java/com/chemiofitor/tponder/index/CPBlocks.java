@@ -1,5 +1,6 @@
 package com.chemiofitor.tponder.index;
 
+import com.chemiofitor.tponder.CreatePaper;
 import com.chemiofitor.tponder.common.block.PapermakingFrameBlock;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
@@ -39,5 +40,7 @@ public final class CPBlocks {
             .build()
             .register();
 
-    public static void register() {}
+    public static void register() {
+        CreatePaper.LOGGER.info("Blocks initialized");
+    }
 }
