@@ -1,0 +1,12 @@
+{
+  "block.cpaper.papermaking_depot": "Papermaking Depot",
+  "block.cpaper.pulp": "Pulp",
+  "fluid.cpaper.pulp": "Pulp",
+  "item.cpaper.papermaking_frame": "Papermaking Frame",
+  "item.cpaper.pulp_bucket": "Pulp Bucket",
+  "item.cpaper.raw_paper": "Raw Paper",
+  "item.cpaper.waste_paper": "Waste Paper",
+  "item.cpaper.wood_fiber": "Wood Fiber",
+  "itemGroup.cpaper.main": "Create: Paper",
+  "tooltip.cpaper.papermaking.pressing": "This pressing can only use Papermaking Frame."
+}

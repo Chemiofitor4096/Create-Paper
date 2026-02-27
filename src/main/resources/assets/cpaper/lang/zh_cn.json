@@ -1,0 +1,9 @@
+{
+	"itemGroup.cpaper.main": "机械动力：纸张",
+	"item.cpaper.wood_fiber": "木纤维",
+	"item.cpaper.waste_paper": "废纸",
+	"item.cpaper.raw_paper": "粗纸",
+	"tooltip.cpaper.papermaking.pressing": "该冲压配方只能在抄纸台上进行。",
+	"block.cpaper.papermaking_depot": "抄纸台",
+	"item.cpaper.papermaking_frame": "抄纸框"
+}

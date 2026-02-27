@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "farmersdelight"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "F": {
+            "item": "farmersdelight:canvas"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "pattern": [
+          " S ",
+          "SFS",
+          " S "
+        ],
+        "result": {
+          "item": "cpaper:papermaking_frame"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

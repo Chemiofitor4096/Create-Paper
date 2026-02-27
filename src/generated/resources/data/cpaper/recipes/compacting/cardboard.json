@@ -1,0 +1,25 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "cpaper:raw_paper"
+    },
+    {
+      "item": "cpaper:raw_paper"
+    },
+    {
+      "item": "cpaper:raw_paper"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.5,
+      "item": "create:cardboard"
+    },
+    {
+      "chance": 0.5,
+      "count": 3,
+      "item": "cpaper:waste_paper"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "SFS",
+    "FFF",
+    "SFS"
+  ],
+  "result": {
+    "item": "cpaper:papermaking_frame"
+  },
+  "show_notification": true
+}
