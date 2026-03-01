@@ -1,0 +1,28 @@
+{
+  "type": "cpaper:pulping",
+  "ingredients": [
+    {
+      "tag": "create:pulpifiable"
+    },
+    {
+      "tag": "create:pulpifiable"
+    },
+    {
+      "tag": "forge:alkaline"
+    },
+    {
+      "tag": "forge:alkaline"
+    },
+    {
+      "amount": 1000,
+      "fluid": "minecraft:water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "amount": 1000,
+      "fluid": "cpaper:pulp"
+    }
+  ]
+}

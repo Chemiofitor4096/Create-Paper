@@ -2,9 +2,6 @@ package com.chemiofitor.tponder.index;
 
 import com.chemiofitor.tponder.CreatePaper;
 import com.simibubi.create.AllFluids;
-import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
-import com.simibubi.create.content.fluids.VirtualFluid;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.createmod.catnip.theme.Color;
@@ -13,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -28,16 +24,19 @@ public final class CPFluids {
     static {
         REGISTRATE.setCreativeTab(CPCreativeModeTabs.MAIN_TAB);
     }
-    
+
     public static final FluidEntry<ForgeFlowingFluid.Flowing> PULP =
-            REGISTRATE.standardFluid("pulp",
-                            SolidRenderedPlaceableFluidType.create(0xA06000, () -> 1f / 32f))
-                    .properties(b -> b.viscosity(400)
-                            .density(400).temperature(40))
+            REGISTRATE
+                    .fluid("pulp", CreatePaper.asResource("block/pulp_still"), CreatePaper.asResource("block/pulp_flow"),
+                            SolidRenderedPlaceableFluidType.create(0xDFBC99, () -> 1f / 32f))
+                    .properties(b -> b.viscosity(400).density(400).temperature(40))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)
                             .tickRate(25)
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
+                    .block()
+                    .blockstate((c, p) -> p.simpleBlock(c.get(), p.models().getExistingFile(p.modLoc("block/pulp"))))
+                    .build()
                     .register();
 
     public static void register() {
@@ -45,7 +44,16 @@ public final class CPFluids {
     }
 
     public static void registerFluidInteractions() {
-
+        FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+                PULP.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return CPBlocks.COAL_GANGUE.getDefaultState();
+                    }
+                }
+        ));
     }
 
     private static class SolidRenderedPlaceableFluidType extends AllFluids.TintedFluidType {

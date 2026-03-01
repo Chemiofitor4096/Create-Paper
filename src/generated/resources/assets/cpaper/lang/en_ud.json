@@ -1,12 +1,18 @@
 {
+  "block.cpaper.coal_gangue": "ǝnbuɐ⅁ ןɐoƆ",
+  "block.cpaper.mechanical_pulper": "ɹǝdןnԀ ןɐɔıuɐɥɔǝW",
   "block.cpaper.papermaking_depot": "ʇodǝᗡ buıʞɐɯɹǝdɐԀ",
+  "block.cpaper.papermaking_frame": "ǝɯɐɹℲ buıʞɐɯɹǝdɐԀ",
   "block.cpaper.pulp": "dןnԀ",
+  "cpaper.subtitle.pulping": "sǝsıou buıdןnԀ",
+  "create.recipe.pulping": "buıdןnԀ",
   "fluid.cpaper.pulp": "dןnԀ",
-  "item.cpaper.papermaking_frame": "ǝɯɐɹℲ buıʞɐɯɹǝdɐԀ",
   "item.cpaper.pulp_bucket": "ʇǝʞɔnᗺ dןnԀ",
   "item.cpaper.raw_paper": "ɹǝdɐԀ ʍɐᴚ",
   "item.cpaper.waste_paper": "ɹǝdɐԀ ǝʇsɐM",
+  "item.cpaper.wet_paper": "ɹǝdɐԀ ʍɐᴚ ʇǝM",
   "item.cpaper.wood_fiber": "ɹǝqıℲ pooM",
   "itemGroup.cpaper.main": "ɹǝdɐԀ :ǝʇɐǝɹƆ",
+  "tag.item.forge.alkaline": "ǝuıןɐʞןⱯ",
   "tooltip.cpaper.papermaking.pressing": "˙ǝɯɐɹℲ buıʞɐɯɹǝdɐԀ ǝsn ʎןuo uɐɔ buıssǝɹd sıɥ⟘"
 }

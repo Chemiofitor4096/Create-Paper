@@ -1,5 +1,7 @@
 {
   "values": [
+    "cpaper:mechanical_pulper",
+    "cpaper:papermaking_frame",
     "cpaper:papermaking_depot"
   ]
 }

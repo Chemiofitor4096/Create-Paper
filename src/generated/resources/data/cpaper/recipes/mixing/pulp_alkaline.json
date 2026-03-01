@@ -8,7 +8,10 @@
       "tag": "create:pulpifiable"
     },
     {
-      "item": "minecraft:bone_meal"
+      "tag": "forge:alkaline"
+    },
+    {
+      "tag": "forge:alkaline"
     },
     {
       "amount": 250,

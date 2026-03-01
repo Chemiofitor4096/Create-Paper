@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_propeller": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create:propeller"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cpaper:crafting/mechical_pulper"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_propeller",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cpaper:crafting/mechical_pulper"
+    ]
+  },
+  "sends_telemetry_event": false
+}

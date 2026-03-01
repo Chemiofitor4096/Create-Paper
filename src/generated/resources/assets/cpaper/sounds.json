@@ -1,0 +1,19 @@
+{
+  "pulping": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.gilded_blackstone.break"
+      }
+    ],
+    "subtitle": "cpaper.subtitle.pulping"
+  },
+  "pulping_compounded_1": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.netherrack.break"
+      }
+    ]
+  }
+}

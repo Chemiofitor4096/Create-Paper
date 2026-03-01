@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "cpaper:raw_paper"
+    }
+  ],
+  "results": [
+    {
+      "item": "cpaper:wet_paper"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ public class CreatePaper {
     public CreatePaper(FMLJavaModLoadingContext context) {
         final IEventBus bus = context.getModEventBus();
 
+        CPSoundEvents.prepare();
+
         CPCreativeModeTabs.register(bus);
 
         REGISTRATE.registerEventListeners(bus);
@@ -28,16 +30,20 @@ public class CreatePaper {
         CPFluids.register();
         CPBlocks.register();
         CPItems.register();
+        CPRecipeTypes.register(bus);
 
         CPBlockEntityTypes.register();
 
         bus.addListener(CreatePaper::init);
+        bus.addListener(CPSoundEvents::register);
 
         LOGGER.info("Create: Paper has loaded!.");
     }
 
     public static void init(final FMLCommonSetupEvent event) {
         CPFluids.registerFluidInteractions();
+
+        event.enqueueWork(CPBlockSpoutingBehaviours::register);
     }
 
     public static ResourceLocation asResource(String path) {

@@ -21,7 +21,7 @@ public class AssemblyOperatorBlockItemInject {
     public void add(LevelReader world, BlockPos pos, BlockState placedOnState, CallbackInfoReturnable<Boolean> cir) {
         boolean flag = cir.getReturnValue();
 
-        flag = flag || CPBlocks.PAPERMAKING_FRAME.has(placedOnState);
+        flag = flag || CPBlocks.PAPERMAKING_DEPOT.has(placedOnState);
 
         cir.setReturnValue(flag);
     }

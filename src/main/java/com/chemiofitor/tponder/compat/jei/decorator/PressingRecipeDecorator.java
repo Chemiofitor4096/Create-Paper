@@ -16,7 +16,7 @@ public class PressingRecipeDecorator implements IRecipeCategoryDecorator<Pressin
     public void draw(PressingRecipe recipe, IRecipeCategory<PressingRecipe> recipeCategory, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         if (recipe.getId().equals(CreatePaper.asResource("pressing/raw_paper"))) {
             AllGuiTextures.JEI_SLOT.render(guiGraphics, 26, 20);
-            ItemStack stack = CPBlocks.PAPERMAKING_FRAME.asStack();
+            ItemStack stack = CPBlocks.PAPERMAKING_DEPOT.asStack();
             stack.getOrCreateTag().putBoolean("IsPressing", true);
 
             guiGraphics.renderItem(stack, 27, 21);

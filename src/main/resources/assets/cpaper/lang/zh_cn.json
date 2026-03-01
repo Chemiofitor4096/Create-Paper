@@ -1,9 +1,18 @@
 {
+	"tooltip.cpaper.papermaking.pressing": "该冲压配方只能在抄纸台上进行。",
+	"tag.item.forge.alkaline": "碱性物质",
 	"itemGroup.cpaper.main": "机械动力：纸张",
 	"item.cpaper.wood_fiber": "木纤维",
+	"item.cpaper.wet_paper": "湿粗纸",
 	"item.cpaper.waste_paper": "废纸",
 	"item.cpaper.raw_paper": "粗纸",
-	"tooltip.cpaper.papermaking.pressing": "该冲压配方只能在抄纸台上进行。",
+	"item.cpaper.pulp_bucket": "纸浆桶",
+	"fluid.cpaper.pulp": "纸浆",
+	"cpaper.subtitle.pulping": "打浆机：打浆",
+	"create.recipe.pulping": "打浆",
+	"block.cpaper.pulp": "纸浆",
+	"block.cpaper.papermaking_frame": "抄纸框",
 	"block.cpaper.papermaking_depot": "抄纸台",
-	"item.cpaper.papermaking_frame": "抄纸框"
+	"block.cpaper.mechanical_pulper": "动力打浆机",
+	"block.cpaper.coal_gangue": "煤矸石"
 }

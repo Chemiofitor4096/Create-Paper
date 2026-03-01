@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "create:propeller"
+    },
+    "F": {
+      "item": "create:andesite_casing"
+    },
+    "S": {
+      "item": "create:cogwheel"
+    }
+  },
+  "pattern": [
+    " S ",
+    " F ",
+    "DDD"
+  ],
+  "result": {
+    "item": "cpaper:mechanical_pulper"
+  },
+  "show_notification": true
+}

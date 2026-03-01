@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-public class PapermakingFrameBlockEntity extends DepotBlockEntity {
-    public PapermakingFrameBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+public class PapermakingDepotBlockEntity extends DepotBlockEntity {
+    public PapermakingDepotBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
 
         getBehaviour(DepotBehaviour.TYPE).onlyAccepts(itemStack -> itemStack.is(AllItems.PULP.get()));

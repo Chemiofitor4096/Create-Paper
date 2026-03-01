@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:pulp"
+    },
+    {
+      "tag": "forge:alkaline"
+    },
+    {
+      "tag": "forge:alkaline"
+    },
+    {
+      "amount": 1000,
+      "fluid": "minecraft:water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "amount": 1000,
+      "fluid": "cpaper:pulp"
+    }
+  ]
+}

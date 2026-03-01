@@ -12,6 +12,8 @@ public final class CPTagKeys {
     public static final class Items {
         public static final TagKey<Item> PULPIFIABLE = create("create", "pulpifiable");
 
+        public static final TagKey<Item> ALKALINE = create("forge", "alkaline");
+
         private static TagKey<Item> create(String namespace, String id) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(namespace, id));
         }

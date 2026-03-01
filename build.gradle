@@ -30,6 +30,10 @@ legacyForge {
         mappingsVersion = parchment_version
     }
 
+    accessTransformers {
+        file('src/main/resources/accesstransformer.cfg')
+    }
+
     mods {
         cpaper {
             sourceSet sourceSets.main

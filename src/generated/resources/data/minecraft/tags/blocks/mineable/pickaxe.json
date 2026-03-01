@@ -1,5 +1,8 @@
 {
   "values": [
+    "cpaper:mechanical_pulper",
+    "cpaper:coal_gangue",
+    "cpaper:papermaking_frame",
     "cpaper:papermaking_depot"
   ]
 }

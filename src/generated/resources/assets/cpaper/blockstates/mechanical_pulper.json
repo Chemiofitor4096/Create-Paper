@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cpaper:block/mechanical_pulper/block"
+    }
+  }
+}

@@ -18,11 +18,12 @@ public final class CPItems {
     public static final ItemEntry<Item> RAW_PAPER = REGISTRATE.item("raw_paper", Item::new)
             .register();
 
-    public static final ItemEntry<Item> WASTE_PAPER = REGISTRATE.item("waste_paper", Item::new)
+    public static final ItemEntry<Item> WET_PAPER = REGISTRATE.item("wet_paper", Item::new)
+            .lang("Wet Raw Paper")
+            .model(AssetLookup.existingItemModel())
             .register();
 
-    public static final ItemEntry<Item> PAPERMAKING_FRAME = REGISTRATE.item("papermaking_frame", Item::new)
-            .model(AssetLookup.existingItemModel())
+    public static final ItemEntry<Item> WASTE_PAPER = REGISTRATE.item("waste_paper", Item::new)
             .register();
 
     public static void register() {
