@@ -115,6 +115,9 @@ dependencies {
     // Farmer's Delight
     modImplementation "maven.modrinth:farmers-delight:${farmers_delight_version}"
 
+    // Create Extension
+    modImplementation "maven.modrinth:create-diesel-generators:${diesel_version}"
+
     // JEI
     modImplementation "mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}"
     modCompileOnly "mezz.jei:jei-${jei_minecraft_version}-common-api:${jei_version}"

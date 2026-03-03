@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class PulpSpoutingBehaviour implements BlockSpoutingBehaviour {
@@ -29,6 +30,9 @@ public class PulpSpoutingBehaviour implements BlockSpoutingBehaviour {
             IItemHandler handler = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.UP).orElse(null);
             if (blockEntity instanceof PapermakingDepotBlockEntity depot) {
                 if (depot.getHeldItem().isEmpty() && simulate) {
+                    spout.getCapability(ForgeCapabilities.FLUID_HANDLER).ifPresent(h -> {
+                        h.drain(250, IFluidHandler.FluidAction.EXECUTE);
+                    });
                     depot.setHeldItem(new ItemStack(CPItems.WET_PAPER));
                     depot.notifyUpdate();
                     return 250;

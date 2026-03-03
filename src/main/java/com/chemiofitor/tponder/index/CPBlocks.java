@@ -4,7 +4,9 @@ import com.chemiofitor.tponder.CreatePaper;
 import com.chemiofitor.tponder.common.block.MechanicalPulperBlock;
 import com.chemiofitor.tponder.common.block.PapermakingDepotBlock;
 import com.chemiofitor.tponder.common.block.PapermakingFrameBlock;
+import com.chemiofitor.tponder.common.block.PulpCauldronBlock;
 import com.chemiofitor.tponder.common.item.CombustibleBlockItem;
+import com.chemiofitor.tponder.data.model.CPAsset;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
@@ -15,11 +17,13 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.chemiofitor.tponder.CreatePaper.REGISTRATE;
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
@@ -33,6 +37,15 @@ public final class CPBlocks {
     static {
         REGISTRATE.setCreativeTab(CPCreativeModeTabs.MAIN_TAB);
     }
+
+    public static final BlockEntry<PulpCauldronBlock> PULP_CAULDRON = REGISTRATE.block("pulp_cauldron", PulpCauldronBlock::new)
+            .initialProperties(() -> Blocks.CAULDRON)
+            .blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(state -> {
+                return ConfiguredModel.builder()
+                        .modelFile(CPAsset.forCauldron(c, p, c.getName()).apply(state))
+                        .build();
+            }))
+            .register();
 
     public static final BlockEntry<MechanicalPulperBlock> MECHANICAL_PULPER =
             REGISTRATE.block("mechanical_pulper", MechanicalPulperBlock::new)

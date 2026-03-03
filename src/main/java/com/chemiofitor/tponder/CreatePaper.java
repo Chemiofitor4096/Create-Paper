@@ -29,6 +29,7 @@ public class CreatePaper {
 
         CPFluids.register();
         CPBlocks.register();
+
         CPItems.register();
         CPRecipeTypes.register(bus);
 

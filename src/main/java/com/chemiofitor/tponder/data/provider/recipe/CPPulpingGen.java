@@ -14,10 +14,9 @@ public class CPPulpingGen extends ProcessingRecipeGen {
     public CPPulpingGen(PackOutput generator) {
         super(generator, CreatePaper.MOD_ID);
 
-        create("pulp_alkaline", b -> b.output(CPFluids.PULP.get(), 1000)
+        create("pulp", b -> b.output(CPFluids.PULP.get(), 1000)
                 .require(AllTags.AllItemTags.PULPIFIABLE.tag)
                 .require(AllTags.AllItemTags.PULPIFIABLE.tag)
-                .require(CPTagKeys.Items.ALKALINE)
                 .require(CPTagKeys.Items.ALKALINE)
                 .require(Fluids.WATER, 1000));
     }

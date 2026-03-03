@@ -26,8 +26,7 @@ public final class CPFluids {
     }
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> PULP =
-            REGISTRATE
-                    .fluid("pulp", CreatePaper.asResource("block/pulp_still"), CreatePaper.asResource("block/pulp_flow"),
+            REGISTRATE.fluid("pulp", CreatePaper.asResource("block/pulp_still"), CreatePaper.asResource("block/pulp_flow"),
                             SolidRenderedPlaceableFluidType.create(0xDFBC99, () -> 1f / 32f))
                     .properties(b -> b.viscosity(400).density(400).temperature(40))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)

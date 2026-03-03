@@ -1,0 +1,22 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "cpaper:wet_paper"
+    },
+    {
+      "item": "cpaper:wet_paper"
+    },
+    {
+      "item": "cpaper:wet_paper"
+    },
+    {
+      "item": "cpaper:wet_paper"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:cardboard"
+    }
+  ]
+}

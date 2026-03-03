@@ -17,7 +17,7 @@ public final class CPCrushingGen extends CrushingRecipeGen {
                 .duration(240)
                 .require(ItemTags.LOGS_THAT_BURN));
 
-        create("coal_gangue_recycling",b -> b.output(0.2f, Items.COAL)
+        create("coal_gangue_recycling",b -> b.output(0.1f, Items.COAL)
                 .duration(120)
                 .require(CPBlocks.COAL_GANGUE.get()));
     }
