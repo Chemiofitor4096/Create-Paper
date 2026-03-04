@@ -6,21 +6,15 @@
     },
     {
       "item": "cpaper:raw_paper"
-    },
-    {
-      "item": "cpaper:raw_paper"
-    },
-    {
-      "item": "cpaper:raw_paper"
     }
   ],
   "results": [
     {
-      "chance": 0.5,
+      "chance": 0.75,
       "item": "create:cardboard"
     },
     {
-      "chance": 0.5,
+      "chance": 0.25,
       "count": 2,
       "item": "cpaper:waste_paper"
     }

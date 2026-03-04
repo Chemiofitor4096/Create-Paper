@@ -2,13 +2,16 @@
   "type": "create:mixing",
   "ingredients": [
     {
-      "tag": "create:pulpifiable"
+      "tag": "forge:dusts/wood"
     },
     {
-      "tag": "create:pulpifiable"
+      "tag": "forge:dusts/wood"
     },
     {
-      "tag": "forge:alkaline"
+      "tag": "forge:dusts/wood"
+    },
+    {
+      "tag": "forge:dusts/wood"
     },
     {
       "tag": "forge:alkaline"

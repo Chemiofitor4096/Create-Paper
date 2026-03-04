@@ -14,6 +14,8 @@ public final class CPTagKeys {
 
         public static final TagKey<Item> ALKALINE = create("forge", "alkaline");
 
+        public static final TagKey<Item> WOOD_DUST = create("forge", "dusts/wood");
+
         private static TagKey<Item> create(String namespace, String id) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(namespace, id));
         }

@@ -11,9 +11,6 @@
       "tag": "forge:alkaline"
     },
     {
-      "tag": "forge:alkaline"
-    },
-    {
       "amount": 1000,
       "fluid": "minecraft:water",
       "nbt": {}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:purple_dye"
+    },
+    "X": {
+      "item": "cpaper:raw_paper"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XSX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "cpaper:purple_paper"
+  },
+  "show_notification": true
+}

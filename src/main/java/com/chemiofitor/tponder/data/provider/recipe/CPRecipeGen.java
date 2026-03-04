@@ -5,10 +5,13 @@ import com.chemiofitor.tponder.index.CPBlocks;
 import com.chemiofitor.tponder.index.CPItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.util.datafix.DataFixers;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import vectorwing.farmersdelight.FarmersDelight;
@@ -74,5 +77,42 @@ public final class CPRecipeGen extends RecipeProvider {
                 100)
                 .unlockedBy("has_raw_paper", has(CPItems.RAW_PAPER))
                 .save(consumer, CreatePaper.asResource("smoking/raw_paper"));
+
+        dyedPaper(Items.BLACK_DYE, CPItems.BLACK_PAPER, consumer);
+        dyedPaper(Items.CYAN_DYE, CPItems.CYAN_PAPER, consumer);
+        dyedPaper(Items.GRAY_DYE, CPItems.GRAY_PAPER, consumer);
+        dyedPaper(Items.GREEN_DYE, CPItems.GREEN_PAPER, consumer);
+        dyedPaper(Items.LIGHT_BLUE_DYE, CPItems.LIGHT_BLUE_PAPER, consumer);
+        dyedPaper(Items.LIGHT_GRAY_DYE, CPItems.LIGHT_GRAY_PAPER, consumer);
+        dyedPaper(Items.LIME_DYE, CPItems.LIME_PAPER, consumer);
+        dyedPaper(Items.ORANGE_DYE, CPItems.ORANGE_PAPER, consumer);
+        dyedPaper(Items.PINK_DYE, CPItems.PINK_PAPER, consumer);
+        dyedPaper(Items.PURPLE_DYE, CPItems.PURPLE_PAPER, consumer);
+        dyedPaper(Items.RED_DYE, CPItems.RED_PAPER, consumer);
+        dyedPaper(Items.YELLOW_DYE, CPItems.YELLOW_PAPER, consumer);
+        dyedPaper(Items.MAGENTA_DYE, CPItems.MAGENTA_PAPER, consumer);
+        dyedPaper(Items.BLUE_DYE, CPItems.BLUE_PAPER, consumer);
+        dyedPaper(Items.BROWN_DYE, CPItems.BROWN_PAPER, consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 8)
+                .pattern("XXX")
+                .pattern("XSX")
+                .pattern("XXX")
+                .define('X', CPItems.RAW_PAPER)
+                .define('S', Items.WHITE_DYE)
+                .unlockedBy("has_raw_paper", has(CPItems.RAW_PAPER))
+                .save(consumer, CreatePaper.asResource("crafting/paper"));
+    }
+
+    private void dyedPaper(ItemLike dye, ItemEntry<?> paper, Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, paper, 8)
+                .pattern("XXX")
+                .pattern("XSX")
+                .pattern("XXX")
+                .define('X', CPItems.RAW_PAPER)
+                .define('S', dye)
+                .unlockedBy("has_raw_paper", has(CPItems.RAW_PAPER))
+                .save(consumer, CreatePaper.asResource("crafting/" + paper.getId().getPath()));
+
     }
 }

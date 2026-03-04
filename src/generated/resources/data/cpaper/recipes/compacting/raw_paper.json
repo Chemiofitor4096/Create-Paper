@@ -10,11 +10,11 @@
   ],
   "results": [
     {
-      "chance": 0.5,
+      "chance": 0.75,
       "item": "cpaper:raw_paper"
     },
     {
-      "chance": 0.5,
+      "chance": 0.25,
       "item": "cpaper:waste_paper"
     },
     {

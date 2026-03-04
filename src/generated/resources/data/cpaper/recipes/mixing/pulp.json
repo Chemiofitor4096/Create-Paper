@@ -2,24 +2,20 @@
   "type": "create:mixing",
   "ingredients": [
     {
-      "item": "create:pulp"
-    },
-    {
-      "item": "create:pulp"
+      "tag": "create:pulpifiable"
     },
     {
       "tag": "forge:alkaline"
     },
     {
-      "amount": 1000,
+      "amount": 250,
       "fluid": "minecraft:water",
       "nbt": {}
     }
   ],
   "results": [
     {
-      "amount": 1000,
-      "fluid": "cpaper:pulp"
+      "item": "create:pulp"
     }
   ]
 }

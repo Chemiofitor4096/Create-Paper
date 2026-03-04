@@ -1,5 +1,5 @@
 {
-  "type": "create:mixing",
+  "type": "createdieselgenerators:bulk_fermenting",
   "ingredients": [
     {
       "item": "create:pulp"

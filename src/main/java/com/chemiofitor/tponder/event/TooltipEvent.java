@@ -16,7 +16,6 @@ public class TooltipEvent {
         ItemStack stack = event.getItemStack();
         var list = event.getToolTip();
         if (CPBlocks.PAPERMAKING_DEPOT.isIn(stack) && stack.getOrCreateTag().getBoolean("IsPressing")) {
-            list.add(Component.empty());
             list.add(Component.translatable("tooltip.cpaper.papermaking.pressing").withStyle(ChatFormatting.GREEN));
         }
     }

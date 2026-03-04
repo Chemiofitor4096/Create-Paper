@@ -24,6 +24,8 @@ public class RemovedRecipes {
 
         if (ModList.get().isLoaded("createdieselgenerators")) {
             LIST.add(ResourceLocation.fromNamespaceAndPath("cpaper", "crushing/wood_fiber"));
+
+            LIST.add(ResourceLocation.fromNamespaceAndPath("createdieselgenerators", "bulk_fermenting/pulp"));
         }
     }
 }
