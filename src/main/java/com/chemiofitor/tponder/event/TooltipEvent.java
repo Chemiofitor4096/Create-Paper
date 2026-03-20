@@ -1,7 +1,9 @@
 package com.chemiofitor.tponder.event;
 
-import com.chemiofitor.tponder.index.CPBlocks;
+import com.chemiofitor.tponder.CreatePaper;
+import com.chemiofitor.tponder.index.CPTagKeys;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -9,14 +11,23 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = CreatePaper.MOD_ID, value = Dist.CLIENT)
 public class TooltipEvent {
     @SubscribeEvent
-    public static void add(ItemTooltipEvent event) {
+    public static void addTip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
-        var list = event.getToolTip();
-        if (CPBlocks.PAPERMAKING_DEPOT.isIn(stack) && stack.getOrCreateTag().getBoolean("IsPressing")) {
-            list.add(Component.translatable("tooltip.cpaper.papermaking.pressing").withStyle(ChatFormatting.GREEN));
+        var tips = event.getToolTip();
+        if (stack.is(CPTagKeys.Items.PAPER)) {
+            CompoundTag tag =stack.getOrCreateTag();
+            if (tag.contains("type")) {
+                String type = tag.getString("type");
+                tips.add(Component.translatable("tooltip.paper.process")
+                        .withStyle(ChatFormatting.GRAY)
+                        .append(
+                                Component.translatable("tooltip.paper.type." + type)
+                                        .withStyle(ChatFormatting.GOLD)
+                        ));
+            }
         }
     }
 }

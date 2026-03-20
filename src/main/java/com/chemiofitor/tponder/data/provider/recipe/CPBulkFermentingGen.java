@@ -5,6 +5,7 @@ import com.chemiofitor.tponder.index.CPFluids;
 import com.chemiofitor.tponder.index.CPTagKeys;
 import com.google.common.collect.Lists;
 import com.jesz.createdieselgenerators.CDGRecipes;
+import com.jesz.createdieselgenerators.CreateDieselGenerators;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.api.data.recipe.ProcessingRecipeGen;
@@ -12,6 +13,7 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 
 public class CPBulkFermentingGen extends ProcessingRecipeGen {
     public CPBulkFermentingGen(PackOutput generator) {
@@ -25,18 +27,21 @@ public class CPBulkFermentingGen extends ProcessingRecipeGen {
                 .require(wood)
                 .require(wood)
                 .require(CPTagKeys.Items.ALKALINE)
-                .require(Fluids.WATER, 250));
+                .require(Fluids.WATER, 250)
+                .withCondition(new ModLoadedCondition(CreateDieselGenerators.ID)));
 
         create("pulp", b -> b.output(AllItems.PULP)
                 .require(AllTags.AllItemTags.PULPIFIABLE.tag)
                 .require(CPTagKeys.Items.ALKALINE)
-                .require(Fluids.WATER, 250));
+                .require(Fluids.WATER, 250)
+                .withCondition(new ModLoadedCondition(CreateDieselGenerators.ID)));
 
         create("pulp_fluid", b -> b.output(CPFluids.PULP.get(), 1000)
                 .require(AllItems.PULP)
                 .require(AllItems.PULP)
                 .require(CPTagKeys.Items.ALKALINE)
-                .require(Fluids.WATER, 1000));
+                .require(Fluids.WATER, 1000)
+                .withCondition(new ModLoadedCondition(CreateDieselGenerators.ID)));
     }
 
     @Override

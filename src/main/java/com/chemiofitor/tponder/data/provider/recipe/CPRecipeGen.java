@@ -3,8 +3,11 @@ package com.chemiofitor.tponder.data.provider.recipe;
 import com.chemiofitor.tponder.CreatePaper;
 import com.chemiofitor.tponder.index.CPBlocks;
 import com.chemiofitor.tponder.index.CPItems;
+import com.chemiofitor.tponder.index.CPTagKeys;
+import com.google.common.collect.Lists;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.AllTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -16,6 +19,7 @@ import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModItems;
+import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 
 import java.util.function.Consumer;
 
@@ -94,14 +98,33 @@ public final class CPRecipeGen extends RecipeProvider {
         dyedPaper(Items.BLUE_DYE, CPItems.BLUE_PAPER, consumer);
         dyedPaper(Items.BROWN_DYE, CPItems.BROWN_PAPER, consumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 8)
-                .pattern("XXX")
-                .pattern("XSX")
-                .pattern("XXX")
-                .define('X', CPItems.RAW_PAPER)
-                .define('S', Items.WHITE_DYE)
-                .unlockedBy("has_raw_paper", has(CPItems.RAW_PAPER))
-                .save(consumer, CreatePaper.asResource("crafting/paper"));
+        ConditionalRecipe.builder()
+                .addCondition(new ModLoadedCondition(FarmersDelight.MODID))
+                .addRecipe(c -> {
+                    CookingPotRecipeBuilder.cookingPotRecipe(AllItems.PULP.get(), 1, 200, 0)
+                            .addIngredient(AllTags.AllItemTags.PULPIFIABLE.tag)
+                            .addIngredient(AllTags.AllItemTags.PULPIFIABLE.tag)
+                            .addIngredient(CPTagKeys.Items.ALKALINE)
+                            .unlockedByAnyIngredient(AllItems.PULP.get())
+                            .build(c);
+                })
+                .build(consumer, CreatePaper.asResource("cooking/pulp"));
+
+        ConditionalRecipe.builder()
+                .addCondition(new ModLoadedCondition(FarmersDelight.MODID))
+                .addRecipe(c -> {
+                    Ingredient woodDust = Ingredient.of(CPTagKeys.Items.WOOD_DUST);
+                    Ingredient wood = Ingredient.merge(Lists.newArrayList(woodDust));
+                    CookingPotRecipeBuilder.cookingPotRecipe(AllItems.PULP.get(), 1, 200, 0)
+                            .addIngredient(wood)
+                            .addIngredient(wood)
+                            .addIngredient(wood)
+                            .addIngredient(wood)
+                            .addIngredient(CPTagKeys.Items.ALKALINE)
+                            .unlockedByAnyIngredient(AllItems.PULP.get())
+                            .build(c);
+                })
+                .build(consumer, CreatePaper.asResource("cooking/pulp_from_wood"));
     }
 
     private void dyedPaper(ItemLike dye, ItemEntry<?> paper, Consumer<FinishedRecipe> consumer) {
@@ -109,9 +132,9 @@ public final class CPRecipeGen extends RecipeProvider {
                 .pattern("XXX")
                 .pattern("XSX")
                 .pattern("XXX")
-                .define('X', CPItems.RAW_PAPER)
+                .define('X', Items.PAPER)
                 .define('S', dye)
-                .unlockedBy("has_raw_paper", has(CPItems.RAW_PAPER))
+                .unlockedBy("has_paper", has(Items.PAPER))
                 .save(consumer, CreatePaper.asResource("crafting/" + paper.getId().getPath()));
 
     }

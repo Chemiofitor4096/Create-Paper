@@ -1,0 +1,19 @@
+{
+  "values": [
+    "cpaper:pink_paper",
+    "cpaper:red_paper",
+    "cpaper:orange_paper",
+    "cpaper:yellow_paper",
+    "cpaper:lime_paper",
+    "cpaper:green_paper",
+    "cpaper:light_blue_paper",
+    "cpaper:cyan_paper",
+    "cpaper:blue_paper",
+    "cpaper:purple_paper",
+    "cpaper:magenta_paper",
+    "cpaper:black_paper",
+    "cpaper:gray_paper",
+    "cpaper:light_gray_paper",
+    "cpaper:brown_paper"
+  ]
+}

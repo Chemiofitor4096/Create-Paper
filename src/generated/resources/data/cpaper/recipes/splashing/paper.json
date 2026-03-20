@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "tag": "cpaper:color_paper"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:paper"
+    }
+  ]
+}

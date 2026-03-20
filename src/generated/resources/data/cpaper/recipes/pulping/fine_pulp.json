@@ -1,0 +1,19 @@
+{
+  "type": "cpaper:pulping",
+  "ingredients": [
+    {
+      "tag": "forge:alkaline"
+    },
+    {
+      "amount": 500,
+      "fluid": "cpaper:pulp",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "fluid": "cpaper:fine_pulp"
+    }
+  ]
+}

@@ -38,6 +38,19 @@ public final class CPFluids {
                     .build()
                     .register();
 
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> FINE_PULP =
+            REGISTRATE.fluid("fine_pulp", CreatePaper.asResource("block/fine_pulp_still"), CreatePaper.asResource("block/fine_pulp_flow"),
+                            SolidRenderedPlaceableFluidType.create(0xE5D9CC, () -> 1f / 32f))
+                    .properties(b -> b.viscosity(400).density(400).temperature(40))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .block()
+                    .blockstate((c, p) -> p.simpleBlock(c.get(), p.models().getExistingFile(p.modLoc("block/fine_pulp"))))
+                    .build()
+                    .register();
+
     public static void register() {
         CreatePaper.LOGGER.info("Fluids initialized");
     }

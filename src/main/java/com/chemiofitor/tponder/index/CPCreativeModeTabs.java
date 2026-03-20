@@ -27,7 +27,7 @@ public final class CPCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("main",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.cpaper.main"))
-                    .icon(CPItems.WOOD_FIBER::asStack)
+                    .icon(CPBlocks.PAPERMAKING_DEPOT::asStack)
                     .displayItems(new RegistrateDisplayItemsGenerator())
                     .build());
 

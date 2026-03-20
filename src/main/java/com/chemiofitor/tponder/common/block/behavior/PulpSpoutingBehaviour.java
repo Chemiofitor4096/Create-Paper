@@ -9,6 +9,7 @@ import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,8 +21,9 @@ import net.minecraftforge.items.IItemHandler;
 public class PulpSpoutingBehaviour implements BlockSpoutingBehaviour {
     @Override
     public int fillBlock(Level level, BlockPos pos, SpoutBlockEntity spout, FluidStack availableFluid, boolean simulate) {
-        if (!availableFluid.getFluid().isSame(CPFluids.PULP.get()))
+        if (!availableFluid.getFluid().isSame(CPFluids.PULP.get()) && !availableFluid.getFluid().isSame(CPFluids.FINE_PULP.get()))
             return 0;
+        boolean isFine = availableFluid.getFluid().isSame(CPFluids.FINE_PULP.get());
         BlockState state = level.getBlockState(pos);
         if (state.is(CPBlocks.PAPERMAKING_DEPOT.get())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
@@ -33,7 +35,7 @@ public class PulpSpoutingBehaviour implements BlockSpoutingBehaviour {
                     spout.getCapability(ForgeCapabilities.FLUID_HANDLER).ifPresent(h -> {
                         h.drain(250, IFluidHandler.FluidAction.EXECUTE);
                     });
-                    depot.setHeldItem(new ItemStack(CPItems.WET_PAPER));
+                    depot.setHeldItem(new ItemStack(isFine? Items.PAPER : CPItems.WET_PAPER));
                     depot.notifyUpdate();
                     return 250;
                 }

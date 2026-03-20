@@ -1,5 +1,11 @@
 {
   "type": "createdieselgenerators:bulk_fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "createdieselgenerators"
+    }
+  ],
   "ingredients": [
     {
       "tag": "create:pulpifiable"

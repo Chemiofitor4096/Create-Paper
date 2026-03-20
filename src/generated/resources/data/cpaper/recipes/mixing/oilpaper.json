@@ -1,0 +1,28 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "createdieselgenerators"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "amount": 100,
+      "fluid": "createdieselgenerators:plant_oil",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "cpaper:oilpaper"
+    },
+    {
+      "amount": 100,
+      "fluid": "createdieselgenerators:plant_oil"
+    }
+  ]
+}

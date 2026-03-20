@@ -1,6 +1,7 @@
 package com.chemiofitor.tponder.client.renderer;
 
 import com.chemiofitor.tponder.common.block.entity.MechanicalPulperBlockEntity;
+import com.chemiofitor.tponder.index.CPPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.AllPartialModels;
@@ -43,13 +44,13 @@ public class MechanicalPulperRenderer extends KineticBlockEntityRenderer<Mechani
         float time = AnimationTickHolder.getRenderTime(be.getLevel());
         float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
-        SuperByteBuffer poleRender = CachedBuffers.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
+        SuperByteBuffer poleRender = CachedBuffers.partial(CPPartialModels.MECHANICAL_PULPER_POLE, blockState);
         poleRender.translate(0, -renderedHeadOffset, 0)
                 .light(light)
                 .renderInto(ms, vb);
 
         VertexConsumer vbCutout = buffer.getBuffer(RenderType.cutoutMipped());
-        SuperByteBuffer headRender = CachedBuffers.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
+        SuperByteBuffer headRender = CachedBuffers.partial(CPPartialModels.MECHANICAL_PULPER_HEAD, blockState);
         headRender.rotateCentered(angle, Direction.UP)
                 .translate(0, -renderedHeadOffset, 0)
                 .light(light)

@@ -1,8 +1,11 @@
 package com.chemiofitor.tponder.index;
 
 import com.chemiofitor.tponder.CreatePaper;
+import com.chemiofitor.tponder.common.recipe.PaperFillingRecipe;
 import com.chemiofitor.tponder.common.recipe.PulpingRecipe;
+import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.fluids.transfer.FillingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
@@ -25,7 +28,8 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 public enum CPRecipeTypes implements IRecipeTypeInfo {
-    PULPING(PulpingRecipe::new)
+    PULPING(PulpingRecipe::new),
+    PAPER_FILLING(() -> new ProcessingRecipeSerializer<>(PaperFillingRecipe::new), AllRecipeTypes.FILLING::getType, false)
     ;
 
     private final ResourceLocation id;

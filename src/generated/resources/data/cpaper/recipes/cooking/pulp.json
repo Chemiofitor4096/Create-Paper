@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "farmersdelight"
+        }
+      ],
+      "recipe": {
+        "type": "farmersdelight:cooking",
+        "cookingtime": 200,
+        "ingredients": [
+          {
+            "tag": "create:pulpifiable"
+          },
+          {
+            "tag": "create:pulpifiable"
+          },
+          {
+            "tag": "forge:alkaline"
+          }
+        ],
+        "result": {
+          "item": "create:pulp"
+        }
+      }
+    }
+  ]
+}

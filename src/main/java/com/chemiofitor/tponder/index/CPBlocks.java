@@ -10,6 +10,7 @@ import com.chemiofitor.tponder.data.model.CPAsset;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllMountedStorageTypes;
+import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.logistics.depot.MountedDepotInteractionBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.AssetLookup;
@@ -25,6 +26,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
+import java.util.function.DoubleSupplier;
+
 import static com.chemiofitor.tponder.CreatePaper.REGISTRATE;
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
@@ -34,17 +37,19 @@ import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public final class CPBlocks {
-    static {
-        REGISTRATE.setCreativeTab(CPCreativeModeTabs.MAIN_TAB);
-    }
 
     public static final BlockEntry<PulpCauldronBlock> PULP_CAULDRON = REGISTRATE.block("pulp_cauldron", PulpCauldronBlock::new)
             .initialProperties(() -> Blocks.CAULDRON)
-            .blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(state -> {
-                return ConfiguredModel.builder()
-                        .modelFile(CPAsset.forCauldron(c, p, c.getName()).apply(state))
-                        .build();
-            }))
+            .blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(state -> ConfiguredModel.builder()
+                    .modelFile(CPAsset.forCauldron(c, p, c.getName()).apply(state))
+                    .build()))
+            .register();
+
+    public static final BlockEntry<PulpCauldronBlock> FINE_PULP_CAULDRON = REGISTRATE.block("fine_pulp_cauldron", PulpCauldronBlock::new)
+            .initialProperties(() -> Blocks.CAULDRON)
+            .blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(state -> ConfiguredModel.builder()
+                    .modelFile(CPAsset.forCauldron(c, p, c.getName()).apply(state))
+                    .build()))
             .register();
 
     public static final BlockEntry<MechanicalPulperBlock> MECHANICAL_PULPER =
@@ -55,6 +60,7 @@ public final class CPBlocks {
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .item(AssemblyOperatorBlockItem::new)
                     .transform(customItemModel())
+                    .onRegister(block -> BlockStressValues.IMPACTS.register(block, () -> 4.0))
                     .register();
 
     public static final BlockEntry<Block> COAL_GANGUE = REGISTRATE.block("coal_gangue", Block::new)

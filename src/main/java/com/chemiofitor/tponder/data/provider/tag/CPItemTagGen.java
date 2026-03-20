@@ -20,5 +20,10 @@ public final class CPItemTagGen extends CPTagGen<Item> {
 
         prov.tag(CPTagKeys.Items.ALKALINE)
                 .add(Items.BONE_MEAL);
+
+        prov.tag(CPTagKeys.Items.PAPER)
+                .add(Items.PAPER)
+                .add(CPItems.RAW_PAPER.get())
+                .addTag(CPTagKeys.Items.COLOR_PAPER);
     }
 }

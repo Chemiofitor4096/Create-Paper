@@ -1,13 +1,16 @@
 package com.chemiofitor.tponder.data.gen;
 
 import com.chemiofitor.tponder.CreatePaper;
+import com.chemiofitor.tponder.compat.ponder.CPPonderPlugin;
 import com.chemiofitor.tponder.data.provider.CPLang;
 import com.chemiofitor.tponder.data.provider.recipe.*;
 import com.chemiofitor.tponder.data.provider.tag.CPItemTagGen;
 import com.chemiofitor.tponder.index.CPSoundEvents;
 import com.tterrag.registrate.providers.ProviderType;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +22,7 @@ public class CPDataGeneration {
 
     @SubscribeEvent
     public static void generate(GatherDataEvent event) {
+        PonderIndex.addPlugin(new CPPonderPlugin());
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         boolean run = event.includeClient();
@@ -39,6 +43,5 @@ public class CPDataGeneration {
         REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CPItemTagGen::new);
 
         REGISTRATE.addDataGenerator(ProviderType.LANG, CPLang::addTranslations);
-
     }
 }
