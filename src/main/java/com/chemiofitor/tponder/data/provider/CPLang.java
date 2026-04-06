@@ -18,6 +18,7 @@ public class CPLang {
         provider.add("tooltip.cpaper.papermaking.pressing", "This pressing can only use Papermaking Frame.");
 
         provider.add("create.recipe.pulping", "Pulping");
+        provider.add("create.recipe.paper_making", "Paper Making");
 
         provider.add("tooltip.paper.process", "Processing Type: ");
 

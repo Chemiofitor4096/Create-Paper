@@ -6,7 +6,7 @@ import com.simibubi.create.api.data.recipe.ProcessingRecipeGen;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 
-public class CPBasinFermentingGen extends ProcessingRecipeGen {
+public final class CPBasinFermentingGen extends ProcessingRecipeGen {
     public CPBasinFermentingGen(PackOutput generator) {
         super(generator, CreatePaper.MOD_ID);
     }

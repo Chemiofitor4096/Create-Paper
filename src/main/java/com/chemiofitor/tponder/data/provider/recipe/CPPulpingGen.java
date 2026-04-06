@@ -11,9 +11,8 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.Tags;
 
-public class CPPulpingGen extends ProcessingRecipeGen {
+public final class CPPulpingGen extends ProcessingRecipeGen {
     public CPPulpingGen(PackOutput generator) {
         super(generator, CreatePaper.MOD_ID);
 

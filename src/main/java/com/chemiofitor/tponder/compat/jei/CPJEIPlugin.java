@@ -1,6 +1,8 @@
 package com.chemiofitor.tponder.compat.jei;
 
 import com.chemiofitor.tponder.CreatePaper;
+import com.chemiofitor.tponder.common.recipe.PaperMakingRecipe;
+import com.chemiofitor.tponder.compat.jei.category.PaperMakingCategory;
 import com.chemiofitor.tponder.compat.jei.category.PulpingCategory;
 import com.chemiofitor.tponder.compat.jei.decorator.PressingRecipeDecorator;
 import com.chemiofitor.tponder.data.accessor.RecipesGetter;
@@ -56,14 +58,21 @@ public class CPJEIPlugin implements IModPlugin {
     private void loadCategories() {
         allCategories.clear();
 
-        CreateRecipeCategory<?>
-                mixing = builder(BasinRecipe.class)
+        CreateRecipeCategory<?> mixing = builder(BasinRecipe.class)
                 .addTypedRecipes(CPRecipeTypes.PULPING)
                 .catalyst(CPBlocks.MECHANICAL_PULPER::get)
                 .catalyst(AllBlocks.BASIN::get)
                 .doubleItemIcon(CPBlocks.MECHANICAL_PULPER.get(), AllBlocks.BASIN.get())
                 .emptyBackground(177, 103)
                 .build("pulping", PulpingCategory::new);
+
+        CreateRecipeCategory<?> paper_making = builder(PaperMakingRecipe.class)
+                .addTypedRecipes(CPRecipeTypes.PAPER_MAKING)
+                .catalyst(AllBlocks.SPOUT::get)
+                .catalyst(CPBlocks.PAPERMAKING_DEPOT::get)
+                .doubleItemIcon(AllBlocks.SPOUT.get(), CPBlocks.PAPERMAKING_DEPOT.get())
+                .emptyBackground(177, 103)
+                .build("paper_making", PaperMakingCategory::new);
     }
 
     @Override

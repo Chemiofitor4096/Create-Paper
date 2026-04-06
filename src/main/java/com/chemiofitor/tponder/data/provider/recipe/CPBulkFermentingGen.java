@@ -15,7 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 
-public class CPBulkFermentingGen extends ProcessingRecipeGen {
+public final class CPBulkFermentingGen extends ProcessingRecipeGen {
     public CPBulkFermentingGen(PackOutput generator) {
         super(generator, CreatePaper.MOD_ID);
 

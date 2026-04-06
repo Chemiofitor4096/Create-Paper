@@ -52,6 +52,13 @@ public final class CPBlocks {
                     .build()))
             .register();
 
+    public static final BlockEntry<PulpCauldronBlock> XUAN_PAPER_PULP_CAULDRON = REGISTRATE.block("xuan_paper_pulp_cauldron", PulpCauldronBlock::new)
+            .initialProperties(() -> Blocks.CAULDRON)
+            .blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(state -> ConfiguredModel.builder()
+                    .modelFile(CPAsset.forCauldron(c, p, c.getName()).apply(state))
+                    .build()))
+            .register();
+
     public static final BlockEntry<MechanicalPulperBlock> MECHANICAL_PULPER =
             REGISTRATE.block("mechanical_pulper", MechanicalPulperBlock::new)
                     .initialProperties(SharedProperties::stone)

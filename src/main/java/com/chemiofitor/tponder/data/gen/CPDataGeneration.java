@@ -39,6 +39,7 @@ public class CPDataGeneration {
         generator.addProvider(run, new CPPulpingGen(output));
         generator.addProvider(run, new CPBulkFermentingGen(output));
         generator.addProvider(run, new CPBasinFermentingGen(output));
+        generator.addProvider(run, new CPPaperMakingGen(output));
 
         REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CPItemTagGen::new);
 

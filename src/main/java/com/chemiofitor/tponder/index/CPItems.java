@@ -76,6 +76,10 @@ public final class CPItems {
     public static final ItemEntry<Item> RAW_PAPER = REGISTRATE.item("raw_paper", Item::new)
             .register();
 
+    public static final ItemEntry<Item> XUAN_PAPER = REGISTRATE.item("xuan_paper", Item::new)
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .register();
+
     public static final ItemEntry<Item> WET_PAPER = REGISTRATE.item("wet_paper", Item::new)
             .lang("Wet Raw Paper")
             .model(AssetLookup.existingItemModel())

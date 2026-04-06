@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.FluidEntry;
 import net.createmod.catnip.theme.Color;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
@@ -48,6 +49,19 @@ public final class CPFluids {
                             .explosionResistance(100f))
                     .block()
                     .blockstate((c, p) -> p.simpleBlock(c.get(), p.models().getExistingFile(p.modLoc("block/fine_pulp"))))
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> XUAN_PAPER_PULP =
+            REGISTRATE.fluid("xuan_paper_pulp", CreatePaper.asResource("block/xuan_paper_pulp_still"), CreatePaper.asResource("block/xuan_paper_pulp_flow"),
+                            SolidRenderedPlaceableFluidType.create(0xE5D9CC, () -> 1f / 32f))
+                    .properties(b -> b.viscosity(400).density(400).temperature(40))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .block()
+                    .blockstate((c, p) -> p.simpleBlock(c.get(), p.models().getExistingFile(p.modLoc("block/xuan_paper_pulp"))))
                     .build()
                     .register();
 

@@ -1,47 +1,36 @@
 package com.chemiofitor.tponder.common.block.behavior;
 
 import com.chemiofitor.tponder.common.block.entity.PapermakingDepotBlockEntity;
-import com.chemiofitor.tponder.index.CPBlocks;
-import com.chemiofitor.tponder.index.CPFluids;
-import com.chemiofitor.tponder.index.CPItems;
+import com.chemiofitor.tponder.common.recipe.PaperFillingRecipe;
+import com.chemiofitor.tponder.common.recipe.PaperMakingRecipe;
+import com.chemiofitor.tponder.index.CPRecipeTypes;
 import com.simibubi.create.api.behaviour.spouting.BlockSpoutingBehaviour;
 import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.RecipeWrapper;
+
+import java.util.List;
 
 public class PulpSpoutingBehaviour implements BlockSpoutingBehaviour {
     @Override
     public int fillBlock(Level level, BlockPos pos, SpoutBlockEntity spout, FluidStack availableFluid, boolean simulate) {
-        if (!availableFluid.getFluid().isSame(CPFluids.PULP.get()) && !availableFluid.getFluid().isSame(CPFluids.FINE_PULP.get()))
-            return 0;
-        boolean isFine = availableFluid.getFluid().isSame(CPFluids.FINE_PULP.get());
-        BlockState state = level.getBlockState(pos);
-        if (state.is(CPBlocks.PAPERMAKING_DEPOT.get())) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity == null)
-                return 0;
-            IItemHandler handler = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.UP).orElse(null);
-            if (blockEntity instanceof PapermakingDepotBlockEntity depot) {
-                if (depot.getHeldItem().isEmpty() && simulate) {
-                    spout.getCapability(ForgeCapabilities.FLUID_HANDLER).ifPresent(h -> {
-                        h.drain(250, IFluidHandler.FluidAction.EXECUTE);
-                    });
-                    depot.setHeldItem(new ItemStack(isFine? Items.PAPER : CPItems.WET_PAPER));
-                    depot.notifyUpdate();
-                    return 250;
-                }
-                return 0;
+        if (level.getBlockEntity(pos) instanceof PapermakingDepotBlockEntity depot) {
+            PaperMakingRecipe recipe = findRecipe(availableFluid, new RecipeWrapper(new ItemStackHandler(0)), level);
+            if (depot.getHeldItem().isEmpty() && simulate && recipe != null) {
+                depot.setHeldItem(recipe.getResultItem(level.registryAccess()));
+                depot.notifyUpdate();
+                return recipe.getRequiredFluid().getRequiredAmount();
             }
+            return 0;
         }
         return 0;
+    }
+
+    public PaperMakingRecipe findRecipe(FluidStack availableFluid, RecipeWrapper wrapper, Level level) {
+        List<PaperMakingRecipe> recipe = CPRecipeTypes.PAPER_MAKING.find(wrapper, level);
+        return recipe.stream().filter(r -> r.getRequiredFluid().test(availableFluid)).findFirst().orElse(null);
     }
 }

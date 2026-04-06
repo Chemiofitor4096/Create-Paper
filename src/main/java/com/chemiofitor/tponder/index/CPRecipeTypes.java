@@ -2,10 +2,9 @@ package com.chemiofitor.tponder.index;
 
 import com.chemiofitor.tponder.CreatePaper;
 import com.chemiofitor.tponder.common.recipe.PaperFillingRecipe;
+import com.chemiofitor.tponder.common.recipe.PaperMakingRecipe;
 import com.chemiofitor.tponder.common.recipe.PulpingRecipe;
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.Create;
-import com.simibubi.create.content.fluids.transfer.FillingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
@@ -24,11 +23,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Supplier;
 
 public enum CPRecipeTypes implements IRecipeTypeInfo {
     PULPING(PulpingRecipe::new),
+    PAPER_MAKING(PaperMakingRecipe::new),
     PAPER_FILLING(() -> new ProcessingRecipeSerializer<>(PaperFillingRecipe::new), AllRecipeTypes.FILLING::getType, false)
     ;
 
@@ -86,8 +86,8 @@ public enum CPRecipeTypes implements IRecipeTypeInfo {
         return (T) type.get();
     }
 
-    public <C extends Container, T extends Recipe<C>> Optional<T> find(C inv, Level world) {
-        return world.getRecipeManager().getRecipeFor(getType(), inv, world);
+    public <C extends Container, T extends Recipe<C>> List<T> find(C inv, Level world) {
+        return world.getRecipeManager().getRecipesFor(getType(), inv, world);
     }
 
     private static class Registers {

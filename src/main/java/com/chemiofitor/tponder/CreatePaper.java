@@ -58,6 +58,8 @@ public class CreatePaper {
     }
 
     private static void client(final FMLClientSetupEvent event) {
+        CPPartialModels.init();
+
         event.enqueueWork(() -> {
             PonderIndex.addPlugin(new CPPonderPlugin());
         });

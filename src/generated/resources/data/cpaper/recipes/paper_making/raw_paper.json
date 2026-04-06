@@ -1,0 +1,15 @@
+{
+  "type": "cpaper:paper_making",
+  "ingredients": [
+    {
+      "amount": 250,
+      "fluid": "cpaper:pulp",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "cpaper:wet_paper"
+    }
+  ]
+}
